@@ -10,21 +10,23 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ShowDetails extends AppCompatActivity {
 
-    private Button view1;
-    private Button view2;
+    private TextView view1;
+    private TextView view2;
     private Button warning;
+    private Button ok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_details);
 
-        view1 = (Button) findViewById(R.id.web1);
+        view1 = (TextView) findViewById(R.id.web1);
         view1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,12 +35,21 @@ public class ShowDetails extends AppCompatActivity {
             }
         });
 
-        view2 = (Button) findViewById(R.id.web2);
+        view2 = (TextView) findViewById(R.id.web2);
         view2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                openWebViewTwo();
                 showWarningDialog2();
+            }
+        });
+
+        ok = (Button)findViewById(R.id.btnok);
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newIntent = new Intent(ShowDetails.this, SubmitNumber.class);
+                startActivity(newIntent);
             }
         });
 
